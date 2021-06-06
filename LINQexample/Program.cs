@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace LINQexample
 {
@@ -140,6 +141,16 @@ namespace LINQexample
                 .FirstOrDefault(x => x.Name == "없어요")
                 ?.Teachers;
 
+            // tip
+            // in fact, you don't have to use ElementAt if you get the result as List by ToList
+            var sortedByName = students
+                .OrderBy(x => x.Name)
+                .ToList();
+            var theThird = sortedByName[2];
+            // also, if you don't want to check the singularity of the element, use First, not Single
+            // usage ranking in real code
+            // FirstOrDefault >>>>>> (many gaps) >>>>>> LastOrDefault >= First >= Last >>>>>>>> (ultra gap) >>>>>>> ElementAt >>>>>>>>> Single 
+
             // #5 GroupBy()
             // use GroupBy() to group elements
             // #5-1 group students by their grade
@@ -211,8 +222,9 @@ namespace LINQexample
                 .ToList();
 
             // #8 Unique
-            // if you need unique set of values from elements, ToHashSet() is useful
-            // you can also use Distinct(), but ToHashSet() is also convenient
+            // if you need unique set of values from elements, use Distinct
+            // ToHashSet can also produce the collection of unique elements from the source collection
+            // but constructing HashSet has many overhead cost, so don't use it without proper reason.
             var numbers = new List<int> { 1, 1, 2, 3, 1, 3, 4, 3, 2, 0, 1, 2, 3, 4, 3 };
             var uniqueNumbers = numbers
                 .Distinct()
@@ -231,6 +243,7 @@ namespace LINQexample
 
             // #9 Take(), Skip()
             // use Take() and/or Skip() if you want N elements or 3rd~7th elements or so
+            // ElementAt   
             var top3Students = students
                 .OrderBy(x => x.Name)
                 .Take(3) // don't confuse! this is not index, it is number
@@ -267,7 +280,7 @@ namespace LINQexample
             // #11 To... What()?
             // you might wonder why we always use ToList() (or ToDictionary)
             // if you don't use ToList(), the return type is IEnumerable<T>
-            // as its name, you can enumerate (i.e. foreach) the IEnumerable<T>
+            // as its name stands, you can enumerate (i.e. foreach) the IEnumerable<T>
             var enumerableStudentNames = students
                 .Select(x => x.Name);
             foreach (var item in enumerableStudentNames)
@@ -375,6 +388,14 @@ namespace LINQexample
                             .Select(s => s.ScoreDict.Average(d => d.Value))
                         .First()))
                 .ToList();
+
+            // P7 get avg Korean score of students in a specific school (decided by a parameter)
+            var p7SchoolName = "욜로고";
+            var p7 = schools
+                .First(x => x.Name == p7SchoolName)
+                .Teachers
+                .SelectMany(x => x.Students)
+                .Average(x => x.ScoreDict[Subject.Korean]);
         }
     }
 }
