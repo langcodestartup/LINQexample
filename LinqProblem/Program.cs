@@ -355,14 +355,14 @@ List<Food> GetFoods()
 
     Food food5 = new()
     {
-        Name = "계란과자",
+        Name = "쌀국수",
         Nutrition = new()
         {
-            ServingSize = new() { Unit = "g", Value = 100 },
-            Calories = new() { Unit = "kcal", Value = 348.00 },
-            Fat = new() { Unit = "g", Value = 10.50 },
-            Carbohydrate = new() { Unit = "g", Value = 29.00 },
-            Protein = new() { Unit = "g", Value = 11.00 }
+            ServingSize = new() { Unit = "g", Value = 300 },
+            Calories = new() { Unit = "kcal", Value = 320.00 },
+            Fat = new() { Unit = "g", Value = 4.20 },
+            Carbohydrate = new() { Unit = "g", Value = 55.00 },
+            Protein = new() { Unit = "g", Value = 16.00 }
         }
     };
 
