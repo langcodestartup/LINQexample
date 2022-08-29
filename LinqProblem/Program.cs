@@ -1,8 +1,11 @@
 ﻿// See https://aka.ms/new-console-template for more information
-using LinqProblem;
+using LinqTest;
 
 Console.WriteLine("Hello, World!");
 
+var people = GetPeople();
+
+var ddd = "";
 List<Person> GetPeople()
 {
     var foods = GetFoods();

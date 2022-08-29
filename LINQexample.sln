@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LINQexample", "LINQexample\LINQexample.csproj", "{2A612AC8-121C-4E7E-80E0-BC10185A186E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqProblem", "LinqProblem\LinqProblem.csproj", "{E8AD880D-1B3E-478A-8C91-D0EB9925CDC0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqTest", "LinqProblem\LinqTest.csproj", "{E8AD880D-1B3E-478A-8C91-D0EB9925CDC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
