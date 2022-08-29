@@ -17,18 +17,57 @@ var people = GetPeople();
  */
 
 /* 
- * 1.
+ * 1. 서울이의 나이는 몇 살?
  */
+// 답 1
+var ageOfKimSeoul = people
+    .Where(x => x.Name == "김서울")
+    .Select(x => x.Age);
+foreach (var a in ageOfKimSeoul)
+{
+    Console.WriteLine(a);
+}
 
+// 답 2
+var SeoulsAge = people
+    .FirstOrDefault(x => x.Name == "김서울")?
+    .Age;
+Console.WriteLine(SeoulsAge);
+
+/*
+ * 2-1. 나이 어린 순으로 정렬한 이름 출력하기
+ */
+var ageOfSeoul = people
+    .OrderBy(x => x.Age)
+    .ToList()
+    .Select(x => x.Name);
+foreach (var x in ageOfSeoul)
+{
+    Console.WriteLine(x);
+}
 
 /* 
- * 2.
+ * 2-2. 여기 사람들 중 남자는 총 몇 명?
  */
+var numberOfMale = people
+    .Where(x => x.Gender == "Male")
+    .ToList()
+    .Count();
 
+Console.WriteLine(numberOfMale);
 
 /* 
- * 3.
+ * 3. 체지방률이 15% 이하인 사람들의 이름과 체지방률은?
+ * (이 때, 체지방률 식은 BodyFatMass / Weight * 100)
  */
+var healthyOnes = people
+    .Select(x => new { bodyFatPercentage = x.BodyFatMass.Value / x.Weight.Value * 100, name = x.Name })
+    .Where(x => x.bodyFatPercentage <= 15)
+    .ToList();
+foreach (var x in healthyOnes)
+{
+    Console.WriteLine($"{x.name}: {x.bodyFatPercentage}");
+}
 
 
 /* 
@@ -243,7 +282,7 @@ List<Person> GetPeople()
             { new DateTime(2022, 08, 05), new() { foods[20], foods[19], foods[22] } },
             { new DateTime(2022, 08, 06), new() { foods[16], foods[02], foods[07] } },
             { new DateTime(2022, 08, 16), new() { foods[15], foods[01], foods[06] } },
-            { new DateTime(2022, 08, 18), new() { foods[24], foods[22], foods[01] } },
+            { new DateTime(2022, 08, 18), new() { foods[23], foods[22], foods[01] } },
             { new DateTime(2022, 08, 19), new() { foods[09], foods[20], foods[09] } },
         },
         EatenList = new()
@@ -253,7 +292,7 @@ List<Person> GetPeople()
             new(){ EatenDate = new DateTime(2022, 08, 05), Foods = new() { foods[20], foods[19], foods[22] } },
             new(){ EatenDate = new DateTime(2022, 08, 06), Foods = new() { foods[16], foods[02], foods[07] } },
             new(){ EatenDate = new DateTime(2022, 08, 16), Foods = new() { foods[15], foods[01], foods[06] } },
-            new(){ EatenDate = new DateTime(2022, 08, 18), Foods = new() { foods[24], foods[22], foods[01] } },
+            new(){ EatenDate = new DateTime(2022, 08, 18), Foods = new() { foods[23], foods[22], foods[01] } },
             new(){ EatenDate = new DateTime(2022, 08, 19), Foods = new() { foods[09], foods[20], foods[09] } },
         }
     };
@@ -276,7 +315,7 @@ List<Person> GetPeople()
             { new DateTime(2022, 08, 16), new() { foods[08], foods[09], foods[01] } },
             { new DateTime(2022, 08, 20), new() { foods[22], foods[11], foods[13] } },
             { new DateTime(2022, 08, 22), new() { foods[08], foods[22], foods[10] } },
-            { new DateTime(2022, 08, 27), new() { foods[24], foods[21], foods[24] } },
+            { new DateTime(2022, 08, 27), new() { foods[23], foods[21], foods[23] } },
             { new DateTime(2022, 08, 29), new() { foods[17], foods[22], foods[04] } },
         },
         EatenList = new()
@@ -286,7 +325,7 @@ List<Person> GetPeople()
             new(){ EatenDate = new DateTime(2022, 08, 16), Foods = new() { foods[08], foods[09], foods[01] } },
             new(){ EatenDate = new DateTime(2022, 08, 20), Foods = new() { foods[22], foods[11], foods[13] } },
             new(){ EatenDate = new DateTime(2022, 08, 22), Foods = new() { foods[08], foods[22], foods[10] } },
-            new(){ EatenDate = new DateTime(2022, 08, 27), Foods = new() { foods[24], foods[21], foods[24] } },
+            new(){ EatenDate = new DateTime(2022, 08, 27), Foods = new() { foods[23], foods[21], foods[23] } },
             new(){ EatenDate = new DateTime(2022, 08, 29), Foods = new() { foods[17], foods[22], foods[04] } },
         }
     };
