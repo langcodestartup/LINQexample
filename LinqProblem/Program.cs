@@ -37,6 +37,11 @@ var people = GetPeople();
  *     Console.WriteLine($"{이름}의 BMI는 {CalcBMI(x, y)}입니다. 체중관리에 신경쓰셔야겠네요");
  */
 
+double CalcBMI(double height, double weight)
+{
+    return weight / Math.Pow(height / 100, 2);
+}
+
 
 /*
  * Q6. 몸무게가 50이상인 사람들이 먹은 음식중에 최고칼로리를 구하시오
@@ -120,11 +125,6 @@ var people = GetPeople();
 
 
 var doIt = "위에 문제를 푸는데에 있어 이 asdf 변수가 없으면 컴파일에 문제가 생겨 마우스를 올려 놓아도 타입을 알 수 없으니, 지우지 마시길 권합니다.";
-
-double CalcBMI(double height, double weight)
-{
-    return weight / Math.Pow(height / 100, 2);
-}
 
 
 List<Person> GetPeople()
