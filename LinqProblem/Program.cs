@@ -17,7 +17,7 @@ var people = GetPeople();
  */
 
 /* 
- * 1. 서울이의 나이는 몇 살?
+ * 1. 서울이의 나이는 몇 살? (初)
  */
 // 답 1
 var ageOfKimSeoul = people
@@ -35,7 +35,7 @@ var SeoulsAge = people
 Console.WriteLine(SeoulsAge);
 
 /*
- * 2-1. 나이 어린 순으로 정렬한 이름 출력하기
+ * 2-1. 나이 어린 순으로 정렬한 이름 출력하기 (初)
  */
 var ageOfSeoul = people
     .OrderBy(x => x.Age)
@@ -47,17 +47,16 @@ foreach (var x in ageOfSeoul)
 }
 
 /* 
- * 2-2. 여기 사람들 중 남자는 총 몇 명?
+ * 2-2. 여기 사람들 중 남자는 총 몇 명? (初)
  */
 var numberOfMale = people
     .Where(x => x.Gender == "Male")
     .ToList()
     .Count();
-
 Console.WriteLine(numberOfMale);
 
 /* 
- * 3. 체지방률이 15% 이하인 사람들의 이름과 체지방률은?
+ * 3. 체지방률이 15% 이하인 사람들의 이름과 체지방률은? (中)
  * (이 때, 체지방률 식은 BodyFatMass / Weight * 100)
  */
 var healthyOnes = people
