@@ -99,14 +99,14 @@ var highestCaloriesOfFood= people.Where(x => x.Weight.Value >= 50)
 //769
 
 //중
-//나이가 30대인 사람들의 평균 칼로리 섭취량 
+//나이가 30대인 사람들의 평균 칼로리 섭취량은?
 var averageCaloriesOver30Ages = people.Where(x => x.Age >= 30)
     .SelectMany(x => x.EatenList.SelectMany(y => y.Foods))
     .Average(x => x.Nutrition.Calories.Value);
 //239.11
 
 //초
-//여자들의 평균 골격근량 
+//여자들의 평균 골격근량은?
 var averageSkeletalMuscleMass =
     people.Where(x=> x.Gender == new Gender().Female)
     .Average(x => x.SkeletalMuscleMass.Value);
