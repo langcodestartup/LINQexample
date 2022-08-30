@@ -93,24 +93,16 @@ var people = GetPeople();
 
 //중
 //몸무게가 50이상인 사람들이 먹은 음식중에 최고칼로리 음식은? 
-var highestCaloriesOfFood= people.Where(x => x.Weight.Value >= 50)
-    .SelectMany(x => x.EatenList.SelectMany(y => y.Foods))
-    .Max(z=>z.Nutrition.Calories.Value);
-//769
+double highestCaloriesOfFoodEatenBy50kg;
+
 
 //중
-//나이가 30대인 사람들의 평균 칼로리 섭취량은?
-var averageCaloriesOver30Ages = people.Where(x => x.Age >= 30)
-    .SelectMany(x => x.EatenList.SelectMany(y => y.Foods))
-    .Average(x => x.Nutrition.Calories.Value);
-//239.11
+//나이가 30대인 사람들의 전체 기간 평균 칼로리 섭취량은?
+double averageEatenCaloriesOver30Ages;
 
 //초
 //여자들의 평균 골격근량은?
-var averageSkeletalMuscleMass =
-    people.Where(x=> x.Gender == new Gender().Female)
-    .Average(x => x.SkeletalMuscleMass.Value);
-//20.54
+double averageSkeletalMuscleMass;
 
 
 var ddd = "";
