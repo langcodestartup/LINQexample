@@ -243,7 +243,7 @@ List<Person> GetPeople()
             { new DateTime(2022, 08, 05), new() { foods[20], foods[19], foods[22] } },
             { new DateTime(2022, 08, 06), new() { foods[16], foods[02], foods[07] } },
             { new DateTime(2022, 08, 16), new() { foods[15], foods[01], foods[06] } },
-            { new DateTime(2022, 08, 18), new() { foods[23], foods[22], foods[01] } },
+            { new DateTime(2022, 08, 18), new() { foods[0], foods[22], foods[01] } },
             { new DateTime(2022, 08, 19), new() { foods[09], foods[20], foods[09] } },
         },
         EatenList = new()
@@ -253,7 +253,7 @@ List<Person> GetPeople()
             new(){ EatenDate = new DateTime(2022, 08, 05), Foods = new() { foods[20], foods[19], foods[22] } },
             new(){ EatenDate = new DateTime(2022, 08, 06), Foods = new() { foods[16], foods[02], foods[07] } },
             new(){ EatenDate = new DateTime(2022, 08, 16), Foods = new() { foods[15], foods[01], foods[06] } },
-            new(){ EatenDate = new DateTime(2022, 08, 18), Foods = new() { foods[23], foods[22], foods[01] } },
+            new(){ EatenDate = new DateTime(2022, 08, 18), Foods = new() { foods[0], foods[22], foods[01] } },
             new(){ EatenDate = new DateTime(2022, 08, 19), Foods = new() { foods[09], foods[20], foods[09] } },
         }
     };
@@ -276,7 +276,7 @@ List<Person> GetPeople()
             { new DateTime(2022, 08, 16), new() { foods[08], foods[09], foods[01] } },
             { new DateTime(2022, 08, 20), new() { foods[22], foods[11], foods[13] } },
             { new DateTime(2022, 08, 22), new() { foods[08], foods[22], foods[10] } },
-            { new DateTime(2022, 08, 27), new() { foods[23], foods[21], foods[23] } },
+            { new DateTime(2022, 08, 27), new() { foods[0], foods[21], foods[23] } },
             { new DateTime(2022, 08, 29), new() { foods[17], foods[22], foods[04] } },
         },
         EatenList = new()
@@ -286,7 +286,7 @@ List<Person> GetPeople()
             new(){ EatenDate = new DateTime(2022, 08, 16), Foods = new() { foods[08], foods[09], foods[01] } },
             new(){ EatenDate = new DateTime(2022, 08, 20), Foods = new() { foods[22], foods[11], foods[13] } },
             new(){ EatenDate = new DateTime(2022, 08, 22), Foods = new() { foods[08], foods[22], foods[10] } },
-            new(){ EatenDate = new DateTime(2022, 08, 27), Foods = new() { foods[23], foods[21], foods[23] } },
+            new(){ EatenDate = new DateTime(2022, 08, 27), Foods = new() { foods[0], foods[21], foods[23] } },
             new(){ EatenDate = new DateTime(2022, 08, 29), Foods = new() { foods[17], foods[22], foods[04] } },
         }
     };
