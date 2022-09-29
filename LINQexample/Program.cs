@@ -47,6 +47,9 @@ namespace LINQexample
             // students
             var students = new List<Student> { s1, s2, s3, s4, s5, s6, s7, s8, s9, s10, s11, s12 };
 
+
+            #region 
+
             // EXAMPLES
 
             // #1 Select()
@@ -56,16 +59,32 @@ namespace LINQexample
                 .Select(x => x.Name)
                 .ToList();
 
+            foreach (var schoolName in schoolNames)
+            {
+                Console.WriteLine($"school name is {schoolName}.");
+            }
+
             // #1-2 project to anonymous object
             // get the list of each school's name & the number of teachers pair (anonymous object)
             var schoolNameAndStudentNums = schools
                 .Select(x => new { x.Name, x.Teachers.Count }) // = new { Name = x.Name, Count = x.Teachers.Count }
                 .ToList();
 
+            foreach (var schoolNameAndStudentNum in schoolNameAndStudentNums)
+            {
+                Console.WriteLine($"school name : {schoolNameAndStudentNum.Name}, the number of teachers pair : {schoolNameAndStudentNums.Count}");
+            }
+
             // #1-3 create new object from element
             var studentBecomeTeacher = students
                 .Select(x => new Teacher { Name = x.Name })
                 .ToList();
+
+            foreach (var teacher in studentBecomeTeacher)
+            {
+                Console.WriteLine($"Who can be a teacher? : {teacher.Name}");
+            }
+
 
             // #2 Where()
             // use Where() to filter elements by condition (boolean expression)
@@ -74,11 +93,21 @@ namespace LINQexample
                 .Where(x => x.Grade == 3)
                 .ToList();
 
+            foreach (var thirdGrade in thirdGrades)
+            {
+                Console.WriteLine($"3rd grade students are {thirdGrade.Name}");
+            }
+
             // #2-2 combine Where() and Select() to get the list of 3rd grade students' name
             var thirdGradeNames = students
                 .Where(x => x.Grade == 3)
                 .Select(x => x.Name)
                 .ToList();
+
+            foreach (var thirdGradeName in thirdGradeNames)
+            {
+                Console.WriteLine($"3rd grade students : {thirdGradeName}");
+            }
 
             // #2-3 use method and external variable in query
             var familyName = "김";
@@ -86,6 +115,11 @@ namespace LINQexample
                 .Where(x => x.Name.StartsWith(familyName))
                 .Select(x => x.Name)
                 .ToList();
+
+            foreach (var kimStudentName in kimStudentNames)
+            {
+                Console.WriteLine($"The person who has a familyname '김' is {kimStudentName}");
+            }
 
             // #3 OrderBy(), ThenBy()
             // use OrderBy() or OrderByDescending() to sort elements
@@ -95,12 +129,18 @@ namespace LINQexample
                 .OrderBy(x => x.Name)
                 .ToList();
 
+            foreach (var sortedStudentName in sortedStudentNames)
+            {
+                Console.WriteLine($"A sorted name is {sortedStudentName.Name}");
+            }
+
+
             // #3-2 combine Where(), OrderBy() and Select()
             var thirdGradeSortedNames = students
-                .Where(x => x.Grade == 3)
-                .OrderBy(x => x.Name)
-                .Select(x => x.Name)
-                .ToList();
+            .Where(x => x.Grade == 3)
+            .OrderBy(x => x.Name)
+            .Select(x => x.Name)
+            .ToList();
             // almost every LINQ query can have multiple forms that return the same result.
             var thirdGradeSortedNames2 = students
                 .Where(x => x.Grade == 3)
@@ -108,11 +148,24 @@ namespace LINQexample
                 .OrderBy(x => x)
                 .ToList();
 
+            foreach (var thirdGradeSortedName in thirdGradeSortedNames)
+            {
+                Console.WriteLine($"A thirdGradeSortedName is {thirdGradeSortedName}");
+            }
+
+
             // #3-3 sort by grade and then by name
-            var sortThen = students
+            var sortedGradeAndNames = students
                 .OrderBy(x => x.Grade)
                 .ThenBy(x => x.Name)
                 .ToList();
+
+            foreach (var sortedGradeAndName in sortedGradeAndNames)
+            {
+                Console.WriteLine($"A sorted Name by Grade is {sortedGradeAndName.Name}");
+            }
+
+            #endregion
 
             // #4 return a single element
             // use First(), Last(), ElementAt(), Single() to return a single element of specific position and condition.
@@ -121,10 +174,15 @@ namespace LINQexample
                 .OrderBy(x => x.Name)
                 .First();
 
-            // #4-2 get the third ~
+            Console.WriteLine($"The first student of the sorted students is {firstStudent.Name}");
+
+            // #4-2 get the third student of the sorted list of students
+            // ElementAt() -> Returns the element at a specified index in a sequence.
             var thirdStudent = students
                 .OrderBy(x => x.Name)
                 .ElementAt(2); // always remember that index start from zero
+
+            Console.WriteLine($"The third student of the sorted students is {thirdStudent.Name}");
 
             // #4-3 get the list of teachers in "욜로고"
             // use First() with a lambda expression that defines condition
@@ -138,8 +196,13 @@ namespace LINQexample
                 .FirstOrDefault(x => x.Name == "없어요");
             // Adv) to prevent NullReferenceException, use null-conditional operators "?." and "?[]"
             var nullConditional = schools
-                .FirstOrDefault(x => x.Name == "없어요")
+                .FirstOrDefault(x => x.Name == "욜로고")
                 ?.Teachers;
+
+            foreach (var teacher in nullConditional)
+            {
+                Console.WriteLine($"Teachers who work 욜로고 are {teacher.Name}");
+            }
 
             // tip
             // in fact, you don't have to use ElementAt if you get the result as List by ToList
@@ -150,6 +213,7 @@ namespace LINQexample
             // also, if you don't want to check the singularity of the element, use First, not Single
             // usage ranking in real code
             // FirstOrDefault >>>>>> (many gaps) >>>>>> LastOrDefault >= First >= Last >>>>>>>> (ultra gap) >>>>>>> ElementAt >>>>>>>>> Single 
+
 
             // #5 GroupBy()
             // use GroupBy() to group elements
@@ -162,6 +226,12 @@ namespace LINQexample
             {
                 var key = item.Key; // for this, key is Grade
                 var studentsInGroup = item.ToList(); // get the elements in IGrouping
+
+                foreach (var student in studentsInGroup)
+                {
+                    Console.WriteLine($"Group students by their grade : {student.Grade}, {student.Name}");
+                }
+
             }
 
             // #5-2 get the list of the number of students in each grade
@@ -175,6 +245,12 @@ namespace LINQexample
                 .GroupBy(x => x.Grade)
                 .Select(x => new { grade = x.Key, count = x.Count() })
                 .ToList();
+
+
+            foreach (var gradeCountPair in gradeCountPairs)
+            {
+                Console.WriteLine($"The number of students in each grade : {gradeCounts.Count}, {gradeCountPairs.Count}");
+            }
 
             // #6 ToDictionary(), ToLookUp()
             // use ToDictionary() to return query result as a dictionary
@@ -266,12 +342,13 @@ namespace LINQexample
             var volunteerResult = schools
                 .Select(school => school.Teachers
                     .Select(teacher => teacher.Students
-                        .Select(student => new { 
-                            name = student.Name, 
-                            count = volunteerDict.TryGetValue(student.Name, out int volunteerCount) ? volunteerCount : 0, 
-                            school = school.Name, 
-                            grade = student.Grade, 
-                            teacher = teacher.Name 
+                        .Select(student => new
+                        {
+                            name = student.Name,
+                            count = volunteerDict.TryGetValue(student.Name, out int volunteerCount) ? volunteerCount : 0,
+                            school = school.Name,
+                            grade = student.Grade,
+                            teacher = teacher.Name
                         })))
                 .ToList();
             // too complex LINQ query isn't fun

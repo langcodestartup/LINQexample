@@ -1,7 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using LinqTest;
 
-Console.WriteLine("Hello, World!");
+Console.WriteLine("----------------------");
 
 var people = GetPeople();
 
@@ -14,13 +14,31 @@ var people = GetPeople();
 /* 
  * Q1. 서울이의 나이는 몇살인지 구하시오
  */
+var seoulAge = people
+                .Where(x => x.Name == "김서울")
+                .Select(x => x.Age)
+                .ToList();
+
+foreach (var item in seoulAge)
+{
+    Console.WriteLine($"서울이의 나이: {item}살");
+}
 
 
 /* 
  * Q2. 사람들이 나이가 어린 순서로 정렬해서 출력하시오.
- *     Console.WriteLine({나이});
+ *    
  */
+Console.WriteLine("----------------------");
 
+var personAge = people
+                .OrderBy(x => x.Age)
+                .ToList();
+
+foreach (var item in personAge)
+{
+    Console.WriteLine($"이름: {item.Name}, 나이: {item.Age}");
+}
 
 /* 
  * Q3. 여성들의 평균 골격근량을 구하시오
