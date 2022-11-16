@@ -62,7 +62,7 @@ double CalcBMI(double height, double weight)
 
 
 /* KSH 中
- * Q9. 섭취한 음식의 총 칼로리의 순서대로 사람들을 나열해서 출력해주세요
+ * Q9. 섭취한 음식의 총 칼로리의 높은 순서대로 사람들을 나열해서 출력해주세요
  *      Console.WriteLine($"{이름}은 {총칼로리}를 먹었습니다");
  */
 
@@ -74,6 +74,8 @@ double CalcBMI(double height, double weight)
 
 
 /* KSH 高
+ * TODO 문제 바꾸어야함 아직 풀지 말아주세요.
+ * 
  * Q11. 평균 지방 섭취량보다 많은 지방을 먹는 사람들을 나열해서 출력해주세요
  *      foreach문 안에서 linq 식을 허용 합니다.
  *      아래와같은 console 형식을 채용해주세요.
