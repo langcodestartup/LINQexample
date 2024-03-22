@@ -120,8 +120,6 @@ double CalcBMI(double height, double weight)
  * 결과는 [B, A]
  * 
  */
-*/
-
 
 var doIt = "위에 문제를 푸는데에 있어 이 asdf 변수가 없으면 컴파일에 문제가 생겨 마우스를 올려 놓아도 타입을 알 수 없으니, 지우지 마시길 권합니다.";
 

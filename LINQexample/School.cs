@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LINQexample
 {
-    class School
+    internal class School
     {
         public string Name { get; set; }
         public List<Teacher> Teachers { get; set; }
